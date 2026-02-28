@@ -1,23 +1,45 @@
-# Clash 分流规则，重点分流 AI 服务、字节海外 AI 服务 、 WEB3 应用、教育类 APP、开发者常用下载节点等分流服务
+# ClashRuleSet
 
-> 本项目基于 ACL4SSR 项目进行修改，用于个人使用
+用于分享和维护 Clash/Clash Meta 可用的 `.list` 规则集。
 
-# 重点个性化分流规则介绍
+## 仓库定位
 
-| 分流规则名称 | 说明                                                                                  |
-| ------------ | ------------------------------------------------------------------------------------- |
-| 🌈 OpenAI    | 需美国节点的 AI 服务，OpenAI、Claude、Grok、Perplexity、Google 服务与 Gemini 合并在此 |
-| 🌈 CiciAI    | 建议使用新加坡节点，确保字节海外版的 APP 和 AI 服务可正常使用                         |
-| 👨‍💻 Developer | 建议使用流量大或免费节点，各种 docker 镜像、模型文件下载专用                          |
-| 🔒 Web3      | 建议使用自建的安全节点，避免出现安全风险                                              |
-| 🫙 自定义     | 放自建节点，搭配上方分流规则使用                                                      |
+- 本仓库只提供规则列表（`*.list`）。
+- 不提供机场订阅、节点信息或任何私密配置。
+- 你可以将本仓库规则接入自己的 Clash 配置（本地、NAS 或云端模板均可）。
 
-其他分流规则，包括 哔哩哔哩,Khan,海外媒体,Spotify,Netflix, YouTube, DisneyPlus, 游戏平台等常用规则。
+## 目录结构
 
-# 使用方式
+- `Clash/`：基础通用规则（如 LAN、广告、直连/代理基础分类等）。
+- `Clash/Ruleset/`：细分业务规则（如 AI、媒体、游戏、平台服务等）。
 
-在订阅的 URL 上增加 config=[替换成下面 ini,或自定义]
+## 在 Clash Meta 中使用
 
-[https://raw.githubusercontent.com/Mistakey/ClashRuleSet/main/Clash/kclash.ini](https://raw.githubusercontent.com/Mistakey/ClashRuleSet/main/Clash/kclash.ini)
+以下为示例（可按需修改策略组名、缓存路径和更新周期）：
 
-订阅地址后面增加：`&config=https%3A%2F%2Fraw.githubusercontent.com%2FMistakey%2FClashRuleSet%2Frefs%2Fheads%2Fmain%2FClash%2Fkclash.ini`
+```yaml
+rule-providers:
+  rule_provider_ai_domain:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://raw.githubusercontent.com/Mistakey/ClashRuleSet/main/Clash/Ruleset/AiDomain.list"
+    path: ./ruleset/ai_domain.list
+    interval: 86400
+
+rules:
+  - RULE-SET,rule_provider_ai_domain,🌈 OpenAI
+  - MATCH,🐟 漏网之鱼
+```
+
+## 常用规则地址示例
+
+- `https://raw.githubusercontent.com/Mistakey/ClashRuleSet/main/Clash/LocalAreaNetwork.list`
+- `https://raw.githubusercontent.com/Mistakey/ClashRuleSet/main/Clash/BanAD.list`
+- `https://raw.githubusercontent.com/Mistakey/ClashRuleSet/main/Clash/Ruleset/AiDomain.list`
+- `https://raw.githubusercontent.com/Mistakey/ClashRuleSet/main/Clash/Ruleset/Netflix.list`
+
+## 说明
+
+- `behavior: classical` 搭配 `.list` 文本规则使用。
+- 建议为 `rule-providers` 显式设置 `format: text`，避免内核按 YAML payload 解析导致报错。
