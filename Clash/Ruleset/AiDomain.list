@@ -1,5 +1,9 @@
 # 3rd part AI router
 
+# Antigravity
+PROCESS-NAME,Antigravity.exe
+PROCESS-NAME,language_server_windows_x64.exe
+
 DOMAIN-SUFFIX,cerebras.ai
 
 # 内容：OpenAi,claude,recraft,poe,bing,gemini,perplexity
