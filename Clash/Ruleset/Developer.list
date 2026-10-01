@@ -16,7 +16,6 @@ DOMAIN-SUFFIX,maven.org
 DOMAIN-SUFFIX,medium.com
 DOMAIN-SUFFIX,mvnrepository.com
 DOMAIN-SUFFIX,quay.io
-DOMAIN-SUFFIX,reddit.com
 DOMAIN-SUFFIX,redhat.com
 DOMAIN-SUFFIX,sonatype.org
 DOMAIN-SUFFIX,sourcegraph.com
@@ -31,9 +30,12 @@ DOMAIN-SUFFIX,hf.co
 DOMAIN-KEYWORD,huggingface
 
 
+DOMAIN-SUFFIX,r2.cloudflarestorage.com
+DOMAIN-SUFFIX,files.pythonhosted.org
+
+
 
 # Github
-DOMAIN-KEYWORD,github
 DOMAIN-SUFFIX,git.io
 DOMAIN-SUFFIX,gitbooks.io
 DOMAIN-SUFFIX,githack.com
